@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClimaApi.ViewModels"
+             x:Class="ClimaApi.Views.ListaTareasPage"
+             x:Name="ListaPage"
+             Title="Lista de Tareas">
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="15" RowSpacing="10">
+
+        <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#512BD4" />
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Tareas}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5" Padding="12" CornerRadius="8" BorderColor="#DDD">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={x:Reference ListaPage}, Path=BindingContext.SeleccionarTareaCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="{Binding Titulo}" FontAttributes="Bold" FontSize="16" />
+                            <Label Text="{Binding Descripcion}" TextColor="Gray" MaxLines="2" />
+                            <HorizontalStackLayout Spacing="10" Margin="0,5,0,0">
+                                <Label Text="{Binding ClimaDescripcion}" FontSize="12" TextColor="#512BD4" FontAttributes="Bold" />
+                                <Label Text="{Binding Temperatura, StringFormat='{0}°C'}" FontSize="12" TextColor="#2B0B98" FontAttributes="Bold" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2" Text="+ Nueva Tarea" Command="{Binding IrANuevaTareaCommand}" BackgroundColor="#512BD4" TextColor="White" HeightRequest="50" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClimaApi.Views.DetalleTareaPage"
+             Title="Detalle de Tarea">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+            <Frame Padding="20" CornerRadius="10" BackgroundColor="#F8F9FA">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding Tarea.Titulo}" FontSize="22" FontAttributes="Bold" TextColor="#512BD4" />
+                    <Label Text="{Binding Tarea.Fecha, StringFormat='Fecha: {0:g}'}" FontSize="12" TextColor="Gray" />
+                    <BoxView HeightRequest="1" Color="#DDD" Margin="0,5" />
+                    <Label Text="{Binding Tarea.Descripcion}" FontSize="16" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Padding="15" CornerRadius="10" BorderColor="#512BD4">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Información del Clima Capturado" FontAttributes="Bold" TextColor="#512BD4" />
+                    <Label Text="{Binding Tarea.ClimaDescripcion, StringFormat='Estado: {0}'}" />
+                    <Label Text="{Binding Tarea.Temperatura, StringFormat='Temperatura: {0}°C'}" FontAttributes="Bold" />
+                    <Label Text="{Binding Tarea.Latitud, StringFormat='Latitud: {0:F4}'}" FontSize="12" TextColor="Gray" />
+                    <Label Text="{Binding Tarea.Longitud, StringFormat='Longitud: {0:F4}'}" FontSize="12" TextColor="Gray" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Volver a la Lista" Command="{Binding VolverCommand}" BackgroundColor="#512BD4" TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

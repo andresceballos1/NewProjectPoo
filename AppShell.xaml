@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="ClimaApi.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:ClimaApi.Views"
+       Title="ClimaApi">
+
+    <ShellContent Title="Tareas" ContentTemplate="{DataTemplate views:ListaTareasPage}" Route="ListaTareasPage" />
+</Shell>
